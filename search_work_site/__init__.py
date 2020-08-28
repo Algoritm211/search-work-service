@@ -1,0 +1,1 @@
+default_app_config = 'search_work_site.apps.SearchWorkSiteConfig'

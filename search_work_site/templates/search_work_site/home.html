@@ -1,0 +1,18 @@
+{% extends 'search_work_site/base.html' %} 
+
+{% block title %} Home {% endblock %}
+{% block content %} 
+
+{% for object in object_vacancies%}
+<div class="card mt-5 mb-5">
+  <div class="card-header">{{object.title}}</div>
+  <div class="card-body">
+    <p class="card-text">{{object.description | truncatewords:15}}</p>
+    <p>
+      {{object.city.name}} | {{object.language.name}} |
+      <small>{{object.timestamp | date:'SHORT_DATE_FORMAT'}}</small>
+    </p>
+    <a href="#" class="btn btn-primary">Перейти</a>
+  </div>
+</div>
+{% endfor %} {% endblock %}
