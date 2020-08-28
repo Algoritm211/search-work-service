@@ -15,6 +15,7 @@ venv/
 ENV/ 
 env.bak/ 
 venv.bak/ 
+wservice/
 
 
 # Visual Studio Code # 
@@ -24,3 +25,5 @@ venv.bak/
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+
