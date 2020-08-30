@@ -1,5 +1,6 @@
 import datetime
 from django.db import models
+import jsonfield
 
 # Create your models here.
 
@@ -74,3 +75,8 @@ class Vacancy(models.Model):
     class Meta:
         verbose_name = 'Вакансия'
         verbose_name_plural = 'Вакансии'
+
+
+class Error(models.Model):
+    timestamp = models.DateField(auto_now_add=True)
+    data = jsonfield.JSONField()

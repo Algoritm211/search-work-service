@@ -1,0 +1,68 @@
+[
+{
+  "model": "search_work_site.city",
+  "pk": 1,
+  "fields": {
+    "name": "Киев",
+    "slug": "1598628023"
+  }
+},
+{
+  "model": "search_work_site.city",
+  "pk": 2,
+  "fields": {
+    "name": "Днепр",
+    "slug": "1598634071"
+  }
+},
+{
+  "model": "search_work_site.language",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "slug": "1598633162"
+  }
+},
+{
+  "model": "search_work_site.language",
+  "pk": 2,
+  "fields": {
+    "name": "JavaScript",
+    "slug": "1598633178"
+  }
+},
+{
+  "model": "search_work_site.language",
+  "pk": 3,
+  "fields": {
+    "name": "Java",
+    "slug": "1598634231"
+  }
+},
+{
+  "model": "search_work_site.vacancy",
+  "pk": 1,
+  "fields": {
+    "url": "http://python.org",
+    "title": "Python Developer",
+    "company": "Компания  1",
+    "description": "Описание 1",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2020-08-28"
+  }
+},
+{
+  "model": "search_work_site.vacancy",
+  "pk": 2,
+  "fields": {
+    "url": "http://js.org",
+    "title": "JavaScript Developer",
+    "company": "Компания 2",
+    "description": "Описание 2",
+    "city": 1,
+    "language": 2,
+    "timestamp": "2020-08-28"
+  }
+}
+]

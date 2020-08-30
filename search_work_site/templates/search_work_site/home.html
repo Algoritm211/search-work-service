@@ -7,6 +7,7 @@
 <div class="card mt-5 mb-5">
   <div class="card-header">{{object.title}}</div>
   <div class="card-body">
+    <h4> {{object.company}} </h4>
     <p class="card-text">{{object.description | truncatewords:15}}</p>
     <p>
       {{object.city.name}} | {{object.language.name}} |
@@ -15,4 +16,22 @@
     <a href="#" class="btn btn-primary">Перейти</a>
   </div>
 </div>
-{% endfor %} {% endblock %}
+
+{% empty %}
+  <h3 class='mb-5 mt-5' align="center">К сожалению по Вашему запросу ничего не было найдено</h3>
+
+{% endfor %} 
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <form method="GET" action="">
+            <div class='form-group'>
+                {{ form.as_p }}
+            </div>
+        
+            <button type="submit" class='btn btn-primary'>Найти вакансии</button>
+        </form> 
+    </div>
+</div>
+
+{% endblock %}
