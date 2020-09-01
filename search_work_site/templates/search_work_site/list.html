@@ -1,0 +1,62 @@
+{% extends 'search_work_site/base.html' %} 
+
+{% block title %} Home {% endblock %}
+{% block content %} 
+
+{% for object in object_vacancies%}
+<div class="card mt-5 mb-5">
+  <div class="card-header">{{object.title}}</div>
+  <div class="card-body">
+    <h4> {{object.company}} </h4>
+    <p class="card-text">{{object.description | truncatewords:15}}</p>
+    <p>
+      {{object.city.name}} | {{object.language.name}} |
+      <small>{{object.timestamp | date:'SHORT_DATE_FORMAT'}}</small>
+    </p>
+    <a href="#" class="btn btn-primary">Перейти</a>
+  </div>
+</div>
+
+{% empty %}
+  <h3 class='mb-5 mt-5' align="center">К сожалению по Вашему запросу ничего не было найдено</h3>
+
+{% endfor %} 
+
+
+{% if object_vacancies %}
+    <div class="row">
+        <div class="col">
+            <div class="pagination">
+                <span class="step-links">
+                    {% if object_vacancies.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ object_vacancies.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ object_vacancies.number }} of {{ object_vacancies.paginator.num_pages }}.
+                    </span>
+            
+                    {% if object_vacancies.has_next %}
+                        <a href="?page={{ object_vacancies.next_page_number }}">next</a>
+                        <a href="?page={{ object_vacancies.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <form method="GET" action="{% url 'list' %}">
+            <div class='form-group'>
+                {{ form.as_p }}
+            </div>
+        
+            <button type="submit" class='btn btn-primary'>Найти вакансии</button>
+        </form> 
+    </div>
+</div>
+
+{% endblock %}
