@@ -1,13 +1,9 @@
-{% extends 'search_work_site/base.html' %} 
-
-{% block title %} Home {% endblock %}
-{% block content %} 
-
-{% for object in object_vacancies%}
+{% extends 'search_work_site/base.html' %} {% block title %} Home {% endblock %}
+{% block content %} {% for object in object_vacancies%}
 <div class="card mt-5 mb-5">
   <div class="card-header">{{object.title}}</div>
   <div class="card-body">
-    <h4> {{object.company}} </h4>
+    <h4>{{object.company}}</h4>
     <p class="card-text">{{object.description | truncatewords:15}}</p>
     <p>
       {{object.city.name}} | {{object.language.name}} |
@@ -18,45 +14,60 @@
 </div>
 
 {% empty %}
-  <h3 class='mb-5 mt-5' align="center">К сожалению по Вашему запросу ничего не было найдено</h3>
+<h3 class="mb-5 mt-5" align="center">
+  К сожалению по Вашему запросу ничего не было найдено
+</h3>
 
-{% endfor %} 
+{% endfor %} {% if object_vacancies %}
+<div class="row">
+  <div class="col">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item">
+          {% if object_vacancies.has_previous %}
+          <a
+            class="page-link"
+            href="?city={{city}}&language={{language}}&page={{ object_vacancies.previous_page_number }}"
+            aria-label="Previous"
+          >
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        {% endif %} 
+        
+        {% for page in object_vacancies.paginator.page_range %}
+        <li class="page-item 
+            {% if page == object_vacancies.number%} 
+            active
+            {% endif %}">
+          <a
+            class="page-link"
+            href="?city={{city}}&language={{language}}&page={{ page }}"
+            >{{ page }}</a
+          >
+        </li>
+        {% endfor %} 
+        
+        {% if object_vacancies.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?city={{city}}&language={{language}}&page={{ object_vacancies.next_page_number }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+        {% endif %} 
+      </ul>
+    </nav>
 
-
-{% if object_vacancies %}
-    <div class="row">
-        <div class="col">
-            <div class="pagination">
-                <span class="step-links">
-                    {% if object_vacancies.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ object_vacancies.previous_page_number }}">previous</a>
-                    {% endif %}
-            
-                    <span class="current">
-                        Page {{ object_vacancies.number }} of {{ object_vacancies.paginator.num_pages }}.
-                    </span>
-            
-                    {% if object_vacancies.has_next %}
-                        <a href="?page={{ object_vacancies.next_page_number }}">next</a>
-                        <a href="?page={{ object_vacancies.paginator.num_pages }}">last &raquo;</a>
-                    {% endif %}
-                </span>
-            </div>
-        </div>
-    </div>
 {% endif %}
 
 <div class="row">
-    <div class="col-md-6 mx-auto">
-        <form method="GET" action="{% url 'list' %}">
-            <div class='form-group'>
-                {{ form.as_p }}
-            </div>
-        
-            <button type="submit" class='btn btn-primary'>Найти вакансии</button>
-        </form> 
-    </div>
+  <div class="col-md-6 mx-auto">
+    <form method="GET" action="{% url 'list' %}">
+      <div class="form-group">{{ form.as_p }}</div>
+
+      <button type="submit" class="btn btn-primary">Найти вакансии</button>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

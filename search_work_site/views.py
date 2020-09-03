@@ -16,6 +16,11 @@ def list_view(request):
     city = request.GET.get('city')
     language = request.GET.get('language')
     page_obj = []
+    context = {
+        'city': city,
+        'language': language,
+        'form': form
+    }
     _filter_dict = dict()
     if city or language:
         if city:
@@ -30,8 +35,5 @@ def list_view(request):
     page_number = request.GET.get('page')
 
     page_obj = paginator.get_page(page_number)
-
-    return render(request, 'search_work_site/list.html', {
-        'object_vacancies': page_obj,
-        'form': form
-        })
+    context['object_vacancies'] = page_obj
+    return render(request, 'search_work_site/list.html', context=context)
