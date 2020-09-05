@@ -1,7 +1,9 @@
 from asyncio import tasks
 import codecs
 import os, sys
+from send_emails import error
 import asyncio
+import datetime
 
 
 project = os.path.dirname(os.path.abspath('manage.py'))
@@ -44,10 +46,10 @@ def get_urls(_settings):
 
     for pair in _settings:
         temp = {}
-        temp['city'] = pair[0]
-        temp['language'] = pair[1]
-        temp['url_data'] = url_dict[pair]
-        #print('TEMP', temp)
+        if pair in url_dict:
+            temp['city'] = pair[0]
+            temp['language'] = pair[1]
+            temp['url_data'] = url_dict[pair]
         urls.append(temp)
 
     return urls
@@ -86,7 +88,18 @@ for job in jobs:
     try:
         vacancy.save()
     except DatabaseError:
-        err = Error(data=errors).save
+        pass
+
+if errors:
+    qs = Error.objects.filter(timestamp=datetime.date.today())
+    if qs.exists():
+        err = qs.first()
+        data = err.data
+        err.data.update({'errors': errors})
+        err.save()
+    else:
+        er = Error(data=f'errors: {errors}').save()
+
 
     # with codecs.open('work.json', 'w', 'utf-8') as file:
     #     file.write(str(jobs))

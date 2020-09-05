@@ -1,7 +1,8 @@
 {% extends 'search_work_site/base.html' %} 
 
-{% block title %} Login {% endblock %}
+{% block title %} Update {% endblock %}
 {% block content %}
+
 <div class="row">
     <div class="col-md-8 mx-auto">
       <h4 class="my-2">Обновить пользователя</h4>
@@ -18,6 +19,23 @@
             {% csrf_token %}
             <button type="submit" class='btn btn-danger my-3'>Удалить аккаунт</button>
         </form>  
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+      <h4 class="my-5">Вы не нашли подходящий набор "город - язык программирования"? 
+          Заполните форму и укажите ваши пожелания. После того, как данные будут добавлены,
+        вы получите письмо на указаный Вами адрес электронной почты</h4>
+        <form method="POST" action="{% url 'accounts:contact' %}">
+            {% csrf_token %}
+            <div class='form-group'>
+                {{ contact_form.as_p }}
+            </div>
+        
+            <button type="submit" class='btn btn-primary'>Отправить</button>
+        </form>
     </div>
 </div>
 

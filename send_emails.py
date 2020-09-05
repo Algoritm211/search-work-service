@@ -1,18 +1,24 @@
-from search_work_service.settings import EMAIL_HOST_USER
-from run_scraping import vacancy
-from search_work_site.models import Vacancy
-import django
 import os, sys
-from django.core.mail import EmailMultiAlternatives, send_mail
-from django.contrib.auth import get_user_model
+import socket
+socket.gethostbyname("")
+import datetime
 
 project = os.path.dirname(os.path.abspath('manage.py'))
 sys.path.append(project)
 os.environ['DJANGO_SETTINGS_MODULE'] = 'search_work_service.settings'
 
+import django
 django.setup()
 
-subject = 'Рассылка вакансий'
+from search_work_service.settings import EMAIL_HOST_USER
+from search_work_site.models import Error, Url, Vacancy
+from django.core.mail import EmailMultiAlternatives
+from django.contrib.auth import get_user_model
+
+
+ADMIN_USER = EMAIL_HOST_USER
+today = datetime.date.today()
+subject = f'Рассылка вакансий за {today}'
 text_content = 'Рассылка вакансий'
 from_email = EMAIL_HOST_USER
 
@@ -20,7 +26,6 @@ from_email = EMAIL_HOST_USER
 empty = '<h2>К сожалению на сегодня по Вашим предпочтениям ничего не было найдено</h2>'
 User = get_user_model()
 queryset = User.objects.filter(send_email = True).values('city', 'language', 'email')
-print('QUERYSET', queryset)
 users_dict = {}
 
 for item in queryset:
@@ -35,7 +40,7 @@ if users_dict:
         params['language_id__in'].append(pair[1])
 
     print('PARAMS', params)
-    qs = Vacancy.objects.filter(**params).values()[:10]
+    qs = Vacancy.objects.filter(**params, timestamp=today).values()[:10]
     vacancies = {}
     for item in qs:
         print('ITEM', item)
@@ -50,12 +55,39 @@ if users_dict:
             html += f'<p> {row["company"]}</p><br><hr>'
         _html = html if html else empty
         for email in emails:
-            # try:
             to = email
             msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
             msg.attach_alternative(_html, "text/html")
             msg.send()
-            # except:
-            #     print(email)
             
+queryset = Error.objects.filter(timestamp=today)
+subject = ''
+text_content = ''
+to = ADMIN_USER
+_html = ''
+if queryset.exists():
+    error = queryset.first()
+    data = error.data
+    print('DATA', data)
+    for item in data:
+        _html += f'<h4 class="card-header"><a href="{item["url"]}">Error {item["title"]}</a></h4>'
+    
+    subject = f'Ошибки скрапинга от {today}'
+    text_content = 'Ошибки скрапинга'
+
+queryset = Url.objects.all().values('city', 'language')
+print('URLS', queryset)
+urls_dict = {(item['city'], item['language']): True for item in queryset}
+urls_errors = ''
+for keys in users_dict.keys():
+    if keys not in urls_dict:
+        urls_errors += f'<h4 class="card-header">Для города {keys[0]} и языка программироования {keys[1]} отсутствуют урлы</h4><br>'
+
+if urls_errors:
+    subject += ' Отсутствующие урлы'
+    _html += urls_errors
+if subject:
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    msg.attach_alternative(_html, "text/html")
+    msg.send()
 
