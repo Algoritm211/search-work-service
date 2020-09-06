@@ -67,21 +67,32 @@ to = ADMIN_USER
 _html = ''
 if queryset.exists():
     error = queryset.first()
-    data = error.data
+    data = error.data.get('errors', [])
     print('DATA', data)
     for item in data:
         _html += f'<h4 class="card-header"><a href="{item["url"]}">Error {item["title"]}</a></h4>'
     
     subject = f'Ошибки скрапинга от {today}'
     text_content = 'Ошибки скрапинга'
+    data = error.data.get('user_data')
+    print('DATA', data)
+    if data:
+        _html += '<hr>'
+        _html += '<h2>Пожелания пользователей</h2>'
+        for item in data:
+            _html += f'<h4 class="card-header">Город {item["city"]}, Язык программирования {item["language"]} E-mail {item["email"]}</h4>'
+    
+    subject += f'Пожелания пользователей от {today}'
+    text_content += 'Пожелания пользователей '
 
 queryset = Url.objects.all().values('city', 'language')
 print('URLS', queryset)
 urls_dict = {(item['city'], item['language']): True for item in queryset}
-urls_errors = ''
+urls_errors = '<hr>'
 for keys in users_dict.keys():
     if keys not in urls_dict:
-        urls_errors += f'<h4 class="card-header">Для города {keys[0]} и языка программироования {keys[1]} отсутствуют урлы</h4><br>'
+        if keys[0] and keys[1]:
+            urls_errors += f'<h4 class="card-header">Для города {keys[0]} и языка программироования {keys[1]} отсутствуют урлы</h4><br>'
 
 if urls_errors:
     subject += ' Отсутствующие урлы'
