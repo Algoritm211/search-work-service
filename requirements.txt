@@ -1,6 +1,10 @@
 psycopg2-binary==2.8.4
 dj-database-url==0.5.0
 Django==3.0.3
+whitenoise==5.1.0
+requests==2.24.0
+requests-file==1.5.1
+requests-toolbelt==0.7.0
 python-dotenv==0.14.0
 django-celery==3.3.1
 django-celery-beat==2.0.0
