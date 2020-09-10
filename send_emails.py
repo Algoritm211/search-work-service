@@ -65,6 +65,7 @@ subject = ''
 text_content = ''
 to = ADMIN_USER
 _html = ''
+error=''
 if queryset.exists():
     error = queryset.first()
     data = error.data.get('errors', [])

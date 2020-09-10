@@ -15,7 +15,7 @@ Including another URLconf
 """
 from search_work_service.views import redirect_to_home_page
 from accounts.views import login_view
-from search_work_site.views import list_view
+from search_work_site.views import VCreate, VDelete, VDetail, VList, VUpdate, list_view, view_detail
 from django.contrib import admin
 from django.urls import path, include
 
@@ -24,6 +24,10 @@ urlpatterns = [
     path('', redirect_to_home_page),
     path('admin/', admin.site.urls),
     path('list/', list_view, name='list'),
+    path('detail/<int:pk>/', VDetail.as_view(), name='detail'),
+    path('create/', VCreate.as_view(), name='create'),
+    path('update/<int:pk>/', VUpdate.as_view(), name='update'),
+    path('delete/<int:pk>/', VDelete.as_view(), name='delete'),
     path('accounts/', include(('accounts.urls', 'accounts'))),
     path('home/', include('search_work_site.urls'))
 ]

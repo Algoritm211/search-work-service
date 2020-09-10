@@ -1,0 +1,18 @@
+
+
+{% extends 'search_work_site/base.html' %} 
+
+{% block title %} Delete {% endblock %}
+
+
+{% block content %} 
+<div class="card mt-5 mb-5">
+    <form method="POST">
+        {% csrf_token %}
+        <p>{{object}}</p>
+        <input type="submit" value="delete?">
+    </form>
+    
+</div>
+
+{% endblock %}

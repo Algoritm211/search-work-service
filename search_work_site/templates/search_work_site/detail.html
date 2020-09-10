@@ -1,0 +1,22 @@
+
+
+{% extends 'search_work_site/base.html' %} 
+
+{% block title %} Detail {% endblock %}
+
+
+{% block content %} 
+<div class="card mt-5 mb-5">
+    <div class="card-header">{{object.title}}</div>
+    <div class="card-body">
+      <p class="card-text">{{object.description}}</p>
+      <h3>{{object.company}}</h3>
+      <p>
+        {{object.city.name}} | {{object.language.name}} |
+        <small>{{object.timestamp | date:'SHORT_DATE_FORMAT'}}</small>
+      </p>
+      <a href="{{ object.url }}" class="btn btn-primary">Перейти</a>
+    </div>
+  </div>
+
+{% endblock %}

@@ -42,7 +42,7 @@ def get_urls(_settings):
     queryset = Url.objects.all().values()
     url_dict = {(qs['city_id'], qs['language_id']): qs['url_data'] for qs in queryset}
     urls = []
-    #print('URLDICT', url_dict)
+    print('URLDICT', url_dict)
 
     for pair in _settings:
         temp = {}

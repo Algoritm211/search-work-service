@@ -1,0 +1,21 @@
+
+{% extends 'search_work_site/base.html' %} 
+
+{% block title %} Detail {% endblock %}
+
+
+{% block content %} 
+<div class="card mt-5 mb-5">
+    <div class="card-header">{{object.title}}</div>
+    <div class="card-body">
+      <p class="card-text">
+          <form method="POST" >
+              {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+          </form>
+      </p>
+    </div>
+  </div>
+
+{% endblock %}
