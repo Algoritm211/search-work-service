@@ -31,7 +31,7 @@ def list_view(request):
         if language:
             _filter_dict['language__name'] = language
 
-    all_vacancies = Vacancy.objects.filter(**_filter_dict)
+    all_vacancies = Vacancy.objects.filter(**_filter_dict).select_related('city', 'language')
 
     paginator = Paginator(all_vacancies, 5)
     
@@ -79,7 +79,7 @@ class VList(ListView):
             if language:
                 _filter_dict['language__name'] = language
 
-            qs = Vacancy.objects.filter(**_filter_dict)
+            qs = Vacancy.objects.filter(**_filter_dict).select_related('city', 'language')
         return qs
 
 class VCreate(CreateView):

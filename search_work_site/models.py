@@ -71,9 +71,13 @@ class Vacancy(models.Model):
     company = models.CharField(max_length=200, verbose_name='Компания')
     description = models.TextField(verbose_name='Описание')
     city = models.ForeignKey(
-        'City', on_delete=models.CASCADE, verbose_name='Город')
+        'City', on_delete=models.CASCADE, 
+        verbose_name='Город',
+        related_name='vacancies')
     language = models.ForeignKey(
-        'Language', on_delete=models.CASCADE, verbose_name='Язык программирования')
+        'Language', on_delete=models.CASCADE, 
+        verbose_name='Язык программирования',
+        related_name='vacancies')
     timestamp = models.DateField(auto_now_add=True)
 
     def __str__(self):
