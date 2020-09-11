@@ -96,6 +96,14 @@
   }
 },
 {
+  "model": "sessions.session",
+  "pk": "h2rkvuyv8hkzyzkt7a8nem3m4g5qs58q",
+  "fields": {
+    "session_data": "NDEwZTNmZGY3NGFjODFhZTJmZDIyNzYyN2YyYmEwYzk3NzJmY2ViZDp7Il9hdXRoX3VzZXJfaWQiOiI1IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3NmQ4N2VkMWM4ZjI5ZGZjM2Y1ZmFhNTA3M2Q3ZWM3N2YwYzQ0YTZjIn0=",
+    "expire_date": "2020-09-25T17:58:07.524Z"
+  }
+},
+{
   "model": "search_work_site.city",
   "pk": 1,
   "fields": {
@@ -109,14 +117,6 @@
   "fields": {
     "name": "Python",
     "slug": "1598869204"
-  }
-},
-{
-  "model": "search_work_site.language",
-  "pk": 2,
-  "fields": {
-    "name": "Java",
-    "slug": "1599304249"
   }
 },
 {
@@ -147,38 +147,12 @@
 },
 {
   "model": "search_work_site.vacancy",
-  "pk": 3,
-  "fields": {
-    "url": "https://www.work.ua/ru/jobs/3975777/",
-    "title": "\nPython developer (\u043a\u0440\u0438\u043f\u0442\u043e\u043f\u0440\u043e\u0435\u043a\u0442\u044b)\n",
-    "company": "Involve",
-    "description": "\n            \u041f\u043e\u043b\u043d\u0430\u044f \u0437\u0430\u043d\u044f\u0442\u043e\u0441\u0442\u044c. \u041e\u043f\u044b\u0442 \u0440\u0430\u0431\u043e\u0442\u044b \u043e\u0442 2 \u043b\u0435\u0442.\n                            \u00abInvolve\u00bb\u00a0\u2014 IT-\u043a\u043e\u043c\u043f\u0430\u043d\u0438\u044f, c\u00a0\u043f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u0432\u044b\u043c \u043f\u043e\u0434\u0445\u043e\u0434\u043e\u043c, \u043e\u0440\u0438\u0435\u043d\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u0430\u044f \u043d\u0430\u00a0\u0440\u0435\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044e \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0445 \u0444\u0438\u043d\u0442\u0435\u0445-\u043f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u0432,\u2026\u2060\n",
-    "city": 1,
-    "language": 1,
-    "timestamp": "2020-08-31"
-  }
-},
-{
-  "model": "search_work_site.vacancy",
   "pk": 4,
   "fields": {
     "url": "https://www.work.ua/ru/jobs/3961343/",
     "title": "\nPython Developer\n",
     "company": "IT Recruitment Solutions (ITRS.ua) \u00ae",
     "description": "\n            \u041f\u043e\u043b\u043d\u0430\u044f \u0437\u0430\u043d\u044f\u0442\u043e\u0441\u0442\u044c. \u041e\u043f\u044b\u0442 \u0440\u0430\u0431\u043e\u0442\u044b \u043e\u0442 5 \u043b\u0435\u0442.\n                            REQUIREMENTS:  Experience in\u00a0Python development from 5 years;   Practical skills with Linux, Docker,\u2026\u2060\n",
-    "city": 1,
-    "language": 1,
-    "timestamp": "2020-08-31"
-  }
-},
-{
-  "model": "search_work_site.vacancy",
-  "pk": 5,
-  "fields": {
-    "url": "https://www.work.ua/ru/jobs/3959845/",
-    "title": "\nJunior Developer in Test (Python)\n",
-    "company": "Ajax Systems",
-    "description": "\n            \u041f\u043e\u043b\u043d\u0430\u044f \u0437\u0430\u043d\u044f\u0442\u043e\u0441\u0442\u044c. \u041e\u043f\u044b\u0442 \u0440\u0430\u0431\u043e\u0442\u044b \u043e\u0442 1 \u0433\u043e\u0434\u0430. \u0412\u044b\u0441\u0448\u0435\u0435 \u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435.\n                            \u041c\u0438, Ajax Systems, \u0441\u0442\u0432\u043e\u0440\u044e\u0454\u043c\u043e \u0441\u0438\u0441\u0442\u0435\u043c\u0443 \u0431\u0435\u0437\u043f\u0435\u043a\u0438 \u0456 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457 smart home. \u0425\u043e\u0447\u0435\u043c\u043e, \u0449\u043e\u0431 \u043a\u043e\u0436\u0435\u043d \u0431\u0443\u0434\u0438\u043d\u043e\u043a \u0441\u0442\u0430\u0432 \u0431\u0435\u0437\u043f\u0435\u0447\u043d\u0438\u043c\u2026\u2060\n",
     "city": 1,
     "language": 1,
     "timestamp": "2020-08-31"
@@ -218,32 +192,6 @@
     "title": "\nSenior Python Developer (Insurance Services)\n",
     "company": "DataArt",
     "description": "\n            \u041f\u043e\u043b\u043d\u0430\u044f \u0437\u0430\u043d\u044f\u0442\u043e\u0441\u0442\u044c. \u041e\u043f\u044b\u0442 \u0440\u0430\u0431\u043e\u0442\u044b \u043e\u0442 2 \u043b\u0435\u0442.\n                            Our client is\u00a0a\u00a0fast-growing US-based start-up founded by\u00a0insurance industry veterans. Its product is\u00a0built\u2026\u2060\n",
-    "city": 1,
-    "language": 1,
-    "timestamp": "2020-08-31"
-  }
-},
-{
-  "model": "search_work_site.vacancy",
-  "pk": 9,
-  "fields": {
-    "url": "https://www.work.ua/ru/jobs/3973275/",
-    "title": "\nSenior Python Developer (Financial Software Solutions)\n",
-    "company": "DataArt",
-    "description": "\n            \u041f\u043e\u043b\u043d\u0430\u044f \u0437\u0430\u043d\u044f\u0442\u043e\u0441\u0442\u044c. \u041e\u043f\u044b\u0442 \u0440\u0430\u0431\u043e\u0442\u044b \u043e\u0442 2 \u043b\u0435\u0442.\n                            THE POSITION OFFERS REMOTE WORK OPPORTUNITY. Our client is\u00a0a\u00a0New York City-based FinTech company that\u2026\u2060\n",
-    "city": 1,
-    "language": 1,
-    "timestamp": "2020-08-31"
-  }
-},
-{
-  "model": "search_work_site.vacancy",
-  "pk": 10,
-  "fields": {
-    "url": "https://www.work.ua/ru/jobs/3953725/",
-    "title": "\nMiddle Odoo (Python) Developer\n",
-    "company": "CR&D",
-    "description": "\n            \u041f\u043e\u043b\u043d\u0430\u044f \u0437\u0430\u043d\u044f\u0442\u043e\u0441\u0442\u044c, \u043d\u0435\u043f\u043e\u043b\u043d\u0430\u044f \u0437\u0430\u043d\u044f\u0442\u043e\u0441\u0442\u044c, \u0443\u0434\u0430\u043b\u0435\u043d\u043d\u0430\u044f \u0440\u0430\u0431\u043e\u0442\u0430. \u041e\u043f\u044b\u0442 \u0440\u0430\u0431\u043e\u0442\u044b \u043e\u0442 2 \u043b\u0435\u0442. \u0412\u044b\u0441\u0448\u0435\u0435 \u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435.\n                            \u041c\u0438\u00a0\u0448\u0443\u043a\u0430\u0454\u043c\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u0442\u0438\u0432\u043d\u043e\u0433\u043e \u0442\u0430\u00a0\u0434\u0440\u0430\u0439\u0432\u043e\u0432\u043e\u0433\u043e \u0440\u043e\u0437\u0440\u043e\u0431\u043d\u0438\u043a\u0430 Python. \u0412 \u0456\u0434\u0435\u0430\u043b\u0456 \u043c\u0438\u00a0\u0448\u0443\u043a\u0430\u0454\u043c\u043e \u0440\u043e\u0437\u0440\u043e\u0431\u043d\u0438\u043a\u0430 \u0437\u00a0\u0434\u043e\u0441\u0432\u0456\u0434\u043e\u043c \u0440\u043e\u0437\u0440\u043e\u0431\u043a\u0438\u2026\u2060\n",
     "city": 1,
     "language": 1,
     "timestamp": "2020-08-31"
@@ -543,19 +491,6 @@
     "title": "\nBackend Python Developer\n",
     "company": "No company",
     "description": "\nOn behalf of Scalors Client, we are looking for a Backend Python/Django Developer for our team in Kyiv on a full-time basis.\n",
-    "city": 1,
-    "language": 1,
-    "timestamp": "2020-08-31"
-  }
-},
-{
-  "model": "search_work_site.vacancy",
-  "pk": 34,
-  "fields": {
-    "url": "https://djinni.co/jobs/140908-python-developer/",
-    "title": "\nPython Developer\n",
-    "company": "No company",
-    "description": "\nLooking for Python Developer for Kiev office of the largest trade industrial company in Ukraine.\r\nEmployment as a private entrepreneur, its support is provided by company accounting and all taxes are paid, modern office in Kyiv, possibility of career and financial growth.\n",
     "city": 1,
     "language": 1,
     "timestamp": "2020-08-31"
@@ -888,19 +823,6 @@
 },
 {
   "model": "search_work_site.vacancy",
-  "pk": 60,
-  "fields": {
-    "url": "https://rabota.ua/company590957/vacancy8040440",
-    "title": "  \u0406\u043d\u0436\u0435\u043d\u0435\u0440-\u0442\u0435\u0441\u0442\u0443\u0432\u0430\u043b\u044c\u043d\u0438\u043a \u0441\u0438\u0441\u0442\u0435\u043c \u0431\u0435\u0437\u043f\u0435\u043a\u0438\n ",
-    "company": "SECUR GROUP",
-    "description": "  \u0406\u043d\u0436\u0435\u043d\u0435\u0440-\u0442\u0435\u0441\u0442\u0443\u0432\u0430\u043b\u044c\u043d\u0438\u043a \u0441\u0438\u0441\u0442\u0435\u043c \u0431\u0435\u0437\u043f\u0435\u043a\u0438\n ",
-    "city": 1,
-    "language": 1,
-    "timestamp": "2020-08-31"
-  }
-},
-{
-  "model": "search_work_site.vacancy",
   "pk": 61,
   "fields": {
     "url": "https://rabota.ua/company4903948/vacancy7801866",
@@ -1115,19 +1037,6 @@
     "title": "\nSenior Python Engineer for Networking Solutions\n",
     "company": "No company",
     "description": "\nAs one of the world leaders in the cybersecurity space, OpenVPN is looking for a senior systems and software engineer with a strong working knowledge of Python, JSON and REST APIs, databases, TCP/IP networking, and SSL VPNs.\n",
-    "city": 1,
-    "language": 1,
-    "timestamp": "2020-08-31"
-  }
-},
-{
-  "model": "search_work_site.vacancy",
-  "pk": 78,
-  "fields": {
-    "url": "https://djinni.co/jobs/141162-data-engineer-undertone-/",
-    "title": "\nData Engineer (Undertone)\n",
-    "company": "No company",
-    "description": "\nUndertone is looking for a Data Engineer in a support role to provide rapid resolutions for data service disruptions in our state-of-the-art Ad Platform. \r\nIn order to be successful, this individual must be proactive and remain informed on data technologies and trends.\n",
     "city": 1,
     "language": 1,
     "timestamp": "2020-08-31"
@@ -1394,6 +1303,19 @@
   }
 },
 {
+  "model": "search_work_site.vacancy",
+  "pk": 99,
+  "fields": {
+    "url": "https://test.url",
+    "title": "test_title",
+    "company": "Test_company",
+    "description": "Test_text",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2020-09-10"
+  }
+},
+{
   "model": "search_work_site.error",
   "pk": 1,
   "fields": {
@@ -1445,7 +1367,7 @@
   "pk": 5,
   "fields": {
     "password": "pbkdf2_sha256$180000$8D93A1B6w66r$NT5y8ZseTInwoor3w62n7ML5+kiJyJPPRJb52WoBD/M=",
-    "last_login": "2020-09-05T11:30:15.330Z",
+    "last_login": "2020-09-10T16:33:06.203Z",
     "email": "algoritm211@gmail.com",
     "is_active": true,
     "is_admin": true,
@@ -1464,7 +1386,7 @@
     "is_active": true,
     "is_admin": false,
     "city": 1,
-    "language": 2,
+    "language": 1,
     "send_email": true
   }
 },
@@ -1992,6 +1914,32 @@
     "object_repr": "2020-09-06",
     "action_flag": 2,
     "change_message": "[{\"changed\": {\"fields\": [\"Data\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2020-09-11T17:57:44.488Z",
+    "user": 5,
+    "content_type": 11,
+    "object_id": "6",
+    "object_repr": "iia@gmail.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Language\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2020-09-11T17:58:07.460Z",
+    "user": 5,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Java",
+    "action_flag": 3,
+    "change_message": ""
   }
 }
 ]
