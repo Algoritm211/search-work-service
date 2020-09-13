@@ -1,3 +1,5 @@
+
+__author__ = 'Alexey_Horbunov'
 from django.contrib import messages
 from search_work_site.forms import FindForm, VForm
 from search_work_site.models import Vacancy

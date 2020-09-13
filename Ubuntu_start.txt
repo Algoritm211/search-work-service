@@ -1,0 +1,71 @@
+# Тут будет последовательность команд (или наборов команд) для 
+# Django + Ubuntu + Gunicorn + PostgreSQL
+
+1. 
+sudo apt update
+sudo apt upgrade
+
+2.
+sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl supervisor
+
+3.
+sudo -u postgres psql
+#DB#
+CREATE DATABASE cloudproject;
+CREATE USER clouduser WITH PASSWORD 'password';
+ALTER ROLE clouduser SET client_encoding TO 'utf8';
+ALTER ROLE clouduser SET default_transaction_isolation TO 'read committed';
+ALTER ROLE clouduser SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE cloudproject TO clouduser;
+\q
+###
+
+4.
+sudo -H pip3 install --upgrade pip
+sudo -H pip3 install virtualenv
+
+5.
+mkdir ~/cloudproject
+cd ~/cloudproject
+
+6.
+virtualenv cloudenv
+
+7.
+source cloudenv/bin/activate
+
+8.
+pip install django gunicorn psycopg2-binary
+
+9.
+pip install django gunicorn psycopg2-binary
+
+10.
+#Переменные окружения#
+sudo -H vim /etc/enviroments
+###
+
+11.
+cd ~/cloudproject
+gunicorn --bind 0.0.0.0:8000 cloudproject.wsgi
+
+12.
+sudo nano /etc/systemd/system/gunicorn.service
+###
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/root/cloudproject
+ExecStart=/root/cloudproject/cloudenv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/root/myproject/myproject.sock myproject.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+###
+
+13.
+sudo systemctl start gunicorn
+sudo systemctl enable gunicorn
