@@ -1,7 +1,7 @@
 from asyncio import tasks
 import codecs
 import os, sys
-from send_emails import error
+# from send_emails import error
 import asyncio
 import datetime
 
@@ -95,7 +95,7 @@ if errors:
     if qs.exists():
         err = qs.first()
         data = err.data
-        err.data.update({'errors': errors})
+        # err.data.update({'errors': errors})
         err.save()
     else:
         er = Error(data=f'errors: {errors}').save()
