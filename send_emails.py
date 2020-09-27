@@ -31,7 +31,7 @@ users_dict = {}
 for item in queryset:
     users_dict.setdefault((item['city'], item['language']), [])
     users_dict[(item['city'], item['language'])].append(item['email'])
-    print('USERS_DICT', users_dict)
+    # print('USERS_DICT', users_dict)
 
 if users_dict:
     params = {'city_id__in': [], 'language_id__in': []}
@@ -39,11 +39,11 @@ if users_dict:
         params['city_id__in'].append(pair[0])
         params['language_id__in'].append(pair[1])
 
-    print('PARAMS', params)
+    # print('PARAMS', params)
     qs = Vacancy.objects.filter(**params, timestamp=today).values()[:10]
     vacancies = {}
     for item in qs:
-        print('ITEM', item)
+        # print('ITEM', item)
         vacancies.setdefault((item['city_id'], item['language_id']), [])
         vacancies[(item['city_id'], item['language_id'])].append(item)
     for keys, emails in users_dict.items():
@@ -61,13 +61,14 @@ if users_dict:
             msg.send()
             
 queryset = Error.objects.filter(timestamp=today)
+print(queryset)
 subject = ''
 text_content = ''
 to = ADMIN_USER
 _html = ''
-error=''
 if queryset.exists():
     error = queryset.first()
+    print(error)
     data = error.data.get('errors', [])
     print('DATA', data)
     for item in data:

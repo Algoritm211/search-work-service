@@ -95,9 +95,10 @@ if errors:
     if qs.exists():
         err = qs.first()
         data = err.data
-        # err.data.update({'errors': errors})
+        err.data.update({'errors': errors})
         err.save()
     else:
+
         er = Error(data=f'errors: {errors}').save()
 
 

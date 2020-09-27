@@ -108,5 +108,8 @@ class Url(models.Model):
         'Language', on_delete=models.CASCADE, verbose_name='Язык программирования')
     url_data = jsonfield.JSONField(default=default_urls)
 
+    def __str__(self):
+        return f'{self.city} - {self.language}'
+
     class Meta:
         unique_together = ('city', 'language')
