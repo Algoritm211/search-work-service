@@ -4,7 +4,7 @@ import os, sys
 # from send_emails import error
 import asyncio
 import datetime
-
+import json
 
 project = os.path.dirname(os.path.abspath('manage.py'))
 sys.path.append(project)
@@ -98,8 +98,8 @@ if errors:
         err.data.update({'errors': errors})
         err.save()
     else:
-
-        er = Error(data=f'errors: {errors}').save()
+        er = Error(data=dict(errors=errors)).save()
+        # er = Error(data=f'errors: {errors}').save()
 
 
     # with codecs.open('work.json', 'w', 'utf-8') as file:
